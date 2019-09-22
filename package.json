@@ -7,37 +7,48 @@
     "email": "ashwanth1109@gmail.com"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "start": "node dist/index.js",
+    "dev:client": "parcel watch index.html --out-dir dist/client",
+    "dev:server": "nodemon --watch ./server --exec babel-node ./server/index.js",
+    "build:client": "parcel build index.html --out-dir dist/client",
+    "build:server": "babel server -d dist",
+    "prebuild": "rm -rf dist",
+    "build": "yarn build:client && yarn build:server",
+    "build:start": "yarn build && yarn start",
+    "dev": "yarn dev:server & yarn dev:client",
+    "deploy": "yarn build && gcloud app deploy --verbosity=info",
+    "browse": "gcloud app browse",
+    "logs": "gcloud app logs tail -s default",
+    "test": "repo-tools test app -- dist/index.js"
   },
   "license": "MIT",
   "dependencies": {
+    "app-root-path": "^2.2.1",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.0",
     "@babel/core": "^7.0.0-0",
+    "@babel/node": "^7.6.1",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
-    "babel-preset-nano-react-app": "^0.1.0",
-    "parcel-bundler": "^1.12.3"
-  },
-  "babel": {
-    "presets": [
-      "nano-react-app"
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-proposal-class-properties",
-        {
-          "loose": true
-        }
-      ],
-      [
-        "@babel/plugin-transform-react-jsx",
-        {
-          "pragmaFrag": "React.Fragment"
-        }
-      ]
-    ]
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "@google-cloud/nodejs-repo-tools": "^3.3.0",
+    "nodemon": "^1.19.2",
+    "parcel-bundler": "^1.12.3",
+    "react-hot-loader": "^4.12.13",
+    "rollup": "^1.21.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0"
   }
 }
