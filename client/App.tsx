@@ -2,7 +2,10 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import useClientDimensions from "react-client-dimensions";
 
+import Home from "./pages/Home";
+import Login from "./pages/Login";
 import { setClientDimensions } from "./actions";
+import useRouter from "./hooks/useRouter";
 import { AppState } from "./types";
 
 const App = ({ _setClientDimensions }: { _setClientDimensions: Function }) => {
@@ -28,12 +31,16 @@ const App = ({ _setClientDimensions }: { _setClientDimensions: Function }) => {
     testApi();
   }, []);
 
-  return (
-    <>
-      <h1>Life Hacker</h1>
-      <p>Parcel Express App Setup Complete With Satisfactory Tooling</p>
-    </>
-  );
+  const routeMap = {
+    "/": () => <Home />,
+    "/login": () => <Login />
+  };
+
+  const [renderComponent, changeRoute] = useRouter(routeMap, "/");
+
+  console.log("router return", renderComponent);
+
+  return renderComponent ? renderComponent() : null;
 };
 
 const mapStateToProps = (app: AppState) => {
