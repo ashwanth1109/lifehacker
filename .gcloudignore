@@ -19,8 +19,11 @@ node_modules/
 .cache/
 client/
 server/
-.babelrc
 index.html
+.babelrc
 yarn-error.log
 README.md
 rollup.config.js
+
+!dist/client/
+!dist/client/index.html
