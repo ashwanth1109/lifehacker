@@ -1,6 +1,18 @@
 import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import useClientDimensions from "react-client-dimensions";
 
-const App = () => {
+import { setClientDimensions } from "./actions";
+import { AppState } from "./types";
+import { CLIENT_RENEG_LIMIT } from "tls";
+
+const App = ({
+  appState,
+  _setClientDimensions
+}: {
+  appState: AppState;
+  _setClientDimensions: Function;
+}) => {
   const testApi = async () => {
     const res = await fetch(`/api/test`, {
       method: "GET",
@@ -12,6 +24,12 @@ const App = () => {
     const data = await res.json();
     console.log("Frontend can communicate with backend", data);
   };
+
+  const { vw, vh } = useClientDimensions();
+
+  useEffect(() => {
+    _setClientDimensions(vw, vh);
+  }, [vw, vh]);
 
   useEffect(() => {
     testApi();
@@ -25,4 +43,12 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (app: AppState) => {
+  console.log("RENDER: APP STATE", app);
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  { _setClientDimensions: setClientDimensions }
+)(App);
