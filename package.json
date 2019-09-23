@@ -7,6 +7,7 @@
     "email": "ashwanth1109@gmail.com"
   },
   "scripts": {
+    "tsc": "tsc --init",
     "start": "node dist/index.js",
     "dev:client": "parcel watch index.html --out-dir dist/client",
     "dev:server": "nodemon --watch ./server --exec babel-node ./server/index.js",
@@ -24,6 +25,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/runtime": "^7.6.0",
     "app-root-path": "^2.2.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
@@ -39,9 +41,13 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/plugin-transform-runtime": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.6.0",
     "@google-cloud/nodejs-repo-tools": "^3.3.0",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "nodemon": "^1.19.2",
     "parcel-bundler": "^1.12.3",
     "react-hot-loader": "^4.12.13",
@@ -50,6 +56,7 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-replace": "^2.2.0"
+    "rollup-plugin-replace": "^2.2.0",
+    "typescript": "^3.6.3"
   }
 }

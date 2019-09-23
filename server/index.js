@@ -16,9 +16,9 @@ app.use(compression());
 
 app.use("/", express.static(`${APP_ROOT}/dist/client`));
 
-app.get("/api", (req, res) =>
+app.get("/api/test", (req, res) =>
   res.json({
-    test: "hello life hacker"
+    test: "API endpoints are running"
   })
 );
 
