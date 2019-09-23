@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useLayoutEffect, useCallback } from "react";
 
 const useRouter = (routeMap: any, defaultRoute: string) => {
   const [page, setPage] = useState(defaultRoute);
@@ -8,7 +8,7 @@ const useRouter = (routeMap: any, defaultRoute: string) => {
     setPage(newRoute);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { pathname } = window.location;
     setPage(pathname);
   }, []);
