@@ -4,15 +4,8 @@ import useClientDimensions from "react-client-dimensions";
 
 import { setClientDimensions } from "./actions";
 import { AppState } from "./types";
-import { CLIENT_RENEG_LIMIT } from "tls";
 
-const App = ({
-  appState,
-  _setClientDimensions
-}: {
-  appState: AppState;
-  _setClientDimensions: Function;
-}) => {
+const App = ({ _setClientDimensions }: { _setClientDimensions: Function }) => {
   const testApi = async () => {
     const res = await fetch(`/api/test`, {
       method: "GET",
