@@ -12,4 +12,8 @@ export const InfoBar = styled.div`
 
 export const Onboarding = styled.div`
   flex: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;

@@ -38,8 +38,6 @@ const App = ({ _setClientDimensions }: { _setClientDimensions: Function }) => {
 
   const [renderComponent, changeRoute] = useRouter(routeMap, "/");
 
-  console.log("router return", renderComponent);
-
   return renderComponent ? renderComponent() : null;
 };
 

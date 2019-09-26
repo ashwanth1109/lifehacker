@@ -7,6 +7,8 @@ import compression from "compression";
 import APP_ROOT from "app-root-path";
 import { Pool } from "pg";
 
+import api from "./routers";
+
 dotenv.config({ silent: true });
 
 const app = express();
@@ -26,18 +28,7 @@ const pool = Pool({
 
 app.use("/", express.static(`${APP_ROOT}/dist/client`));
 
-app.get("/api/test", (req, res) =>
-  res.json({
-    test: "API endpoints are running"
-  })
-);
-
-app.get("/api/users", (req, res) => {
-  pool.query("SELECT * FROM users", (err, results) => {
-    if (err) throw err;
-    res.status(200).json(results.rows);
-  });
-});
+app.use("/api", api);
 
 app.get("/*", (req, res) => res.sendFile(`${APP_ROOT}/dist/client/index.html`));
 

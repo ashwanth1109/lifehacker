@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { AppState } from "../types";
 import { Login as StyledLogin, InfoBar, Onboarding } from "./styles";
+import Input from "../components/Input";
 
 type Props = {
   vw: number;
@@ -12,7 +13,10 @@ const Login = ({ vw }: Props) => {
   return (
     <StyledLogin>
       {vw > 1000 && <InfoBar />}
-      <Onboarding />
+      <Onboarding>
+        <Input label="Enter email" type="email" icon="email" />
+        <Input label="Enter password" type="password" icon="password" />
+      </Onboarding>
     </StyledLogin>
   );
 };
