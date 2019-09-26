@@ -1,27 +1,37 @@
 import styled from "styled-components";
+import { themeGradient } from "client/styles/colors";
 
 export const Input = styled.div`
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 
-export const Label = styled.div``;
+export const Label = styled.div`
+  font-size: 0.8rem;
+`;
 
 export const Field = styled.div`
   display: flex;
-  height: 30px;
+  height: 50px;
 `;
 
 export const FieldIcon = styled.div`
-  width: 30px;
-  background: #222;
+  width: 50px;
 `;
 
 export const FieldInput = styled.input`
   border: 0;
   outline: none;
   flex: 1;
-  background: #bbb;
+  padding: 0 16px;
 `;
 
-export const Highlight = styled.div``;
+export const Highlight = styled<any>("div")`
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: ${({ focus }) => (focus ? themeGradient : "#fff")};
+  transition: 2s ease-in-out background;
+`;

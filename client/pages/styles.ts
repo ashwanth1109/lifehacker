@@ -17,3 +17,8 @@ export const Onboarding = styled.div`
   align-items: center;
   justify-content: center;
 `;
+
+export const Form = styled.form`
+  max-width: 450px;
+  width: 80%;
+`;

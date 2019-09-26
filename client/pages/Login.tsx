@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { AppState } from "../types";
-import { Login as StyledLogin, InfoBar, Onboarding } from "./styles";
+import { Login as StyledLogin, InfoBar, Onboarding, Form } from "./styles";
 import Input from "../components/Input";
 import { Spacer } from "client/styles";
 
@@ -15,9 +15,11 @@ const Login = ({ vw }: Props) => {
     <StyledLogin>
       {vw > 1000 && <InfoBar />}
       <Onboarding>
-        <Input label="Enter email" type="email" icon="email" />
-        <Spacer height={16} />
-        <Input label="Enter password" type="password" icon="password" />
+        <Form>
+          <Input label="Email" type="email" icon="email" />
+          <Spacer height={16} />
+          <Input label="Password" type="password" icon="password" />
+        </Form>
       </Onboarding>
     </StyledLogin>
   );

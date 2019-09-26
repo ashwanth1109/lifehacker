@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Spacer = styled.div`
-  width: ${({ width }) => (width ? `${width}px` : "100%")};
-  height: ${({ height }) => (height ? `${height}PX` : "100%")};
+export const Spacer = styled<any>("div")`
+  width: ${props => (props.width ? props.width : "100%")};
+  height: ${props => (props.height ? props.height : "100%")};
 `;
