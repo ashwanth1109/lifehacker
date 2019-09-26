@@ -24,6 +24,7 @@ index.html
 yarn-error.log
 README.md
 rollup.config.js
+.env
 
 !dist/client/
 !dist/client/index.html

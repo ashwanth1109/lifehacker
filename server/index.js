@@ -15,12 +15,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(compression());
 
+const { DB_USER, DB_NAME, DB_PASS, HOST } = process.env;
+
 const pool = Pool({
-  user: "ashwanth",
-  host: "localhost",
-  database: "lifehacker",
-  password: "secret",
-  port: 5432
+  user: DB_USER,
+  database: DB_NAME,
+  password: DB_PASS,
+  host: HOST
 });
 
 app.use("/", express.static(`${APP_ROOT}/dist/client`));
@@ -32,7 +33,7 @@ app.get("/api/test", (req, res) =>
 );
 
 app.get("/api/users", (req, res) => {
-  pool.query("SELECT * FROM users ORDER BY id ASC", (err, results) => {
+  pool.query("SELECT * FROM users", (err, results) => {
     if (err) throw err;
     res.status(200).json(results.rows);
   });
