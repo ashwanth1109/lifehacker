@@ -2,6 +2,8 @@
 
 import { Router } from "express";
 
+import pool from "../";
+
 const router = Router();
 
 router.get("/register", (req, res) => {
