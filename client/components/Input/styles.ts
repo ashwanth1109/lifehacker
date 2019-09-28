@@ -18,6 +18,9 @@ export const Field = styled.div`
 
 export const FieldIcon = styled.div`
   width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const FieldInput = styled.input`
@@ -25,6 +28,7 @@ export const FieldInput = styled.input`
   outline: none;
   flex: 1;
   padding: 0 16px;
+  font-size: 1.2rem;
 `;
 
 export const Highlight = styled<any>("div")`
@@ -32,6 +36,5 @@ export const Highlight = styled<any>("div")`
   bottom: 0;
   height: 2px;
   width: 100%;
-  background: ${({ focus }) => (focus ? themeGradient : "#fff")};
-  transition: 2s ease-in-out background;
+  background: ${({ focus }) => (focus ? themeGradient : "#bbb")};
 `;
