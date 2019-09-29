@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { setClientDimensions } from "./actions";
 import useRouter from "./hooks/useRouter";
-import { AppState } from "./types";
 
 const App = ({ _setClientDimensions }: { _setClientDimensions: Function }) => {
   const testApi = async () => {
@@ -41,12 +40,7 @@ const App = ({ _setClientDimensions }: { _setClientDimensions: Function }) => {
   return renderComponent ? renderComponent() : null;
 };
 
-const mapStateToProps = (app: AppState) => {
-  console.log("RENDER: APP STATE", app);
-  return {};
-};
-
 export default connect(
-  mapStateToProps,
+  null,
   { _setClientDimensions: setClientDimensions }
 )(App);

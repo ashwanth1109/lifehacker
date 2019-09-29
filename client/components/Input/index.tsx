@@ -12,7 +12,7 @@ import {
 import { InputTypes } from "./types";
 import { Spacer } from "client/styles";
 
-export default ({ type, icon, placeholder }: InputTypes) => {
+export default ({ type, icon, placeholder, value, setValue }: InputTypes) => {
   const [focus, setFocus] = useState(false);
 
   const handleFocus = useCallback(() => {
@@ -22,6 +22,13 @@ export default ({ type, icon, placeholder }: InputTypes) => {
   const handleBlur = useCallback(() => {
     setFocus(false);
   }, []);
+
+  const handleChange = useCallback(
+    (e: any) => {
+      setValue(e.target.value);
+    },
+    [setValue]
+  );
 
   return (
     <Input>
@@ -35,6 +42,8 @@ export default ({ type, icon, placeholder }: InputTypes) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
           placeholder={placeholder || ""}
+          value={value}
+          onChange={handleChange}
         />
         <Highlight focus={focus} />
       </Field>
